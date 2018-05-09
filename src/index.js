@@ -18,6 +18,7 @@ const jsonPath = require('./jsonPath');
 const createLambdaContext = require('./createLambdaContext');
 const createVelocityContext = require('./createVelocityContext');
 const createLambdaProxyContext = require('./createLambdaProxyContext');
+const createLambdaKongProxyContext = require('./createLambdaKongProxyContext');
 const renderVelocityTemplateObject = require('./renderVelocityTemplateObject');
 const createAuthScheme = require('./createAuthScheme');
 const functionHelper = require('./functionHelper');
@@ -545,6 +546,9 @@ class Offline {
             }
             else if (integration === 'lambda-proxy') {
               event = createLambdaProxyContext(request, this.options, this.velocityContextOptions.stageVariables);
+            }
+            else if (integration === 'kong-proxy') {
+              event = createLambdaKongProxyContext(request, this.options, this.velocityContextOptions.stageVariables);
             }
 
             event.isOffline = true;
