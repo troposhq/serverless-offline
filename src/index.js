@@ -733,7 +733,7 @@ class Offline {
                 response.statusCode = statusCode;
                 response.source = result;
               }
-              else if (integration === 'lambda-proxy') {
+              else if (integration === 'lambda-proxy' || integration === 'kong-proxy') {
                 response.statusCode = statusCode = result.statusCode || 200;
 
                 const defaultHeaders = { 'Content-Type': 'application/json' };
